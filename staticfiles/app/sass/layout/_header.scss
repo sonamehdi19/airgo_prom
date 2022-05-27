@@ -1,0 +1,36 @@
+@use "../utilities/mixins" as *;
+@use "../utilities/variables" as *;
+
+header {
+  position: relative;
+
+  & > div {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 100vh;
+    background-color: $color-accent;
+    z-index: -1;
+    clip-path: circle(99% at 49% 0);
+    transition: all 0.5s;
+  }
+
+  @include sm {
+    & > div {
+      clip-path: circle(85% at 49% 0);
+    }
+  }
+
+  @include md {
+    & > div {
+      clip-path: circle(48% at 90% 9%);
+    }
+  }
+
+  @include lg {
+    & > div {
+      clip-path: circle(55% at 90% 9%);
+    }
+  }
+}

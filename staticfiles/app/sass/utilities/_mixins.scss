@@ -1,0 +1,112 @@
+@use "./variables" as *;
+
+// Buttons
+@mixin btn($bg, $text) {
+  background-color: $bg;
+  border: 0;
+  border-radius: 49px;
+  color: $text;
+  cursor: pointer;
+  font-size: 1.4rem;
+  text-align: center;
+  font-weight: 600;
+  text-transform: uppercase;
+  line-height: 1.6rem;
+  transition: all 0.5s;
+
+  &:hover {
+    background: darken($bg, 20%);
+  }
+}
+
+// Forms
+@mixin form {
+  form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0rem 5rem;
+    transition: all 0.2s 0.7s;
+    overflow: hidden;
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+  }
+
+  label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  input {
+    background: none;
+    outline: none;
+    border: none;
+    line-height: 1;
+    font-weight: 500;
+    font-size: 1.65rem;
+    color: #444;
+  }
+
+  input::placeholder {
+    color: #aaa;
+    font-weight: 500;
+  }
+
+  button {
+    width: 150px;
+    height: 49px;
+    margin: 1rem 0;
+  }
+
+  .form-group {
+    max-width: 380px;
+    width: 100%;
+    background-color: #f0f0f0;
+    margin: 1rem 0;
+    height: 5.5rem;
+    border-radius: 5.5rem;
+    display: grid;
+    grid-template-columns: 15% 85%;
+    padding: 0 0.4rem;
+    position: relative;
+  }
+}
+
+// Media queries
+@mixin sm {
+  @media (min-width: map-get($breakpoints, "sm")) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (min-width: map-get($breakpoints, "md")) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media (min-width: map-get($breakpoints, "lg")) {
+    @content;
+  }
+}
+
+@mixin xl {
+  @media (min-width: map-get($breakpoints, "xl")) {
+    @content;
+  }
+}
+
+@mixin xxl {
+  @media (min-width: map-get($breakpoints, "xxl")) {
+    @content;
+  }
+}
+
+@mixin breakpoint($max-width) {
+  @media (max-width: $max-width) {
+    @content;
+  }
+}

@@ -1,0 +1,265 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="{% static 'app/images/apple-touch-icon.png' %}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="{% static 'app/images/favicon-32x32.png' %}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="{% static 'app/images/favicon-16x16.png' %}"
+    />
+    <link rel="manifest" href="{% static 'app/images/site.webmanifest' %}" />
+    <title>AirGo | Qeydiyyat</title>
+    <link rel="stylesheet" href="{% static 'app/css/validation.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'app/css/search.css' %}" />
+  </head>
+  <body>
+    <main>
+      <div class="form-container">
+        <div class="join">
+          <form class="sign-in" method="POST">
+            {% csrf_token %}
+            <h2>Xoş Gəldiniz</h2>
+
+            <div class="form-group">
+              <label for="signin-email">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 512 512"
+                >
+                  <path
+                    d="M207.8 20.73c-93.45 18.32-168.7 93.66-187 187.1c-27.64 140.9 68.65 266.2 199.1 285.1c19.01 2.888 36.17-12.26 36.17-31.49l.0001-.6631c0-15.74-11.44-28.88-26.84-31.24c-84.35-12.98-149.2-86.13-149.2-174.2c0-102.9 88.61-185.5 193.4-175.4c91.54 8.869 158.6 91.25 158.6 183.2l0 16.16c0 22.09-17.94 40.05-40 40.05s-40.01-17.96-40.01-40.05v-120.1c0-8.847-7.161-16.02-16.01-16.02l-31.98 .0036c-7.299 0-13.2 4.992-15.12 11.68c-24.85-12.15-54.24-16.38-86.06-5.106c-38.75 13.73-68.12 48.91-73.72 89.64c-9.483 69.01 43.81 128 110.9 128c26.44 0 50.43-9.544 69.59-24.88c24 31.3 65.23 48.69 109.4 37.49C465.2 369.3 496 324.1 495.1 277.2V256.3C495.1 107.1 361.2-9.332 207.8 20.73zM239.1 304.3c-26.47 0-48-21.56-48-48.05s21.53-48.05 48-48.05s48 21.56 48 48.05S266.5 304.3 239.1 304.3z"
+                  />
+                </svg>
+              </label>
+              {{form.email}}
+            </div>
+
+            <div class="form-group">
+              <label for="signin-password">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 448 512"
+                >
+                  <path
+                    d="M80 192V144C80 64.47 144.5 0 224 0C303.5 0 368 64.47 368 144V192H384C419.3 192 448 220.7 448 256V448C448 483.3 419.3 512 384 512H64C28.65 512 0 483.3 0 448V256C0 220.7 28.65 192 64 192H80zM144 192H304V144C304 99.82 268.2 64 224 64C179.8 64 144 99.82 144 144V192z"
+                  />
+                </svg>
+              </label>
+              {{form.password}}
+            </div>
+
+            <button type="submit" name="submit" value="sign_in">
+              Daxil Ol
+            </button>
+          </form>
+
+          <form class="sign-up" method="POST">
+            {% csrf_token %}
+            <h2>Yeni Hesab Yaradın</h2>
+            <div class="form-group">
+              <label for="name">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="19"
+                  height="19"
+                  viewBox="0 0 448 512"
+                >
+                  <path
+                    d="M224 256c70.7 0 128-57.31 128-128s-57.3-128-128-128C153.3 0 96 57.31 96 128S153.3 256 224 256zM274.7 304H173.3C77.61 304 0 381.6 0 477.3c0 19.14 15.52 34.67 34.66 34.67h378.7C432.5 512 448 496.5 448 477.3C448 381.6 370.4 304 274.7 304z"
+                  />
+                </svg>
+              </label>
+              {{form.username}}
+            </div>
+
+            {% if form.username.errors %} {% for error in form.username.errors
+            %}
+            <div class="alert alert-danger">
+              <strong>{{ error|escape }}</strong>
+            </div>
+
+            {% endfor %} {% endif %}
+
+            <div class="form-group">
+              <label for="email">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 512 512"
+                >
+                  <path
+                    d="M207.8 20.73c-93.45 18.32-168.7 93.66-187 187.1c-27.64 140.9 68.65 266.2 199.1 285.1c19.01 2.888 36.17-12.26 36.17-31.49l.0001-.6631c0-15.74-11.44-28.88-26.84-31.24c-84.35-12.98-149.2-86.13-149.2-174.2c0-102.9 88.61-185.5 193.4-175.4c91.54 8.869 158.6 91.25 158.6 183.2l0 16.16c0 22.09-17.94 40.05-40 40.05s-40.01-17.96-40.01-40.05v-120.1c0-8.847-7.161-16.02-16.01-16.02l-31.98 .0036c-7.299 0-13.2 4.992-15.12 11.68c-24.85-12.15-54.24-16.38-86.06-5.106c-38.75 13.73-68.12 48.91-73.72 89.64c-9.483 69.01 43.81 128 110.9 128c26.44 0 50.43-9.544 69.59-24.88c24 31.3 65.23 48.69 109.4 37.49C465.2 369.3 496 324.1 495.1 277.2V256.3C495.1 107.1 361.2-9.332 207.8 20.73zM239.1 304.3c-26.47 0-48-21.56-48-48.05s21.53-48.05 48-48.05s48 21.56 48 48.05S266.5 304.3 239.1 304.3z"
+                  />
+                </svg>
+              </label>
+              {{form.email}}
+            </div>
+
+            {% if form.email.errors %} {% for error in form.email.errors %}
+            <div class="alert alert-danger">
+              <strong>{{ error|escape }}</strong>
+            </div>
+
+            {% endfor %} {% endif %}
+
+            <div class="form-group">
+              <label for="password">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 448 512"
+                >
+                  <path
+                    d="M80 192V144C80 64.47 144.5 0 224 0C303.5 0 368 64.47 368 144V192H384C419.3 192 448 220.7 448 256V448C448 483.3 419.3 512 384 512H64C28.65 512 0 483.3 0 448V256C0 220.7 28.65 192 64 192H80zM144 192H304V144C304 99.82 268.2 64 224 64C179.8 64 144 99.82 144 144V192z"
+                  />
+                </svg>
+              </label>
+              {{ form.password1 }}
+            </div>
+
+            {% if form.password1.errors %} {% for error in form.password1.errors
+            %}
+            <div class="alert alert-danger">
+              <strong>{{ error|escape }}</strong>
+            </div>
+
+            {% endfor %} {% endif %}
+
+            <div class="form-group">
+              <label for="repeat-password">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="19"
+                  height="19"
+                  viewBox="0 0 512 512"
+                >
+                  <path
+                    d="M480 256c-17.67 0-32 14.31-32 32c0 52.94-43.06 96-96 96H192L192 344c0-9.469-5.578-18.06-14.23-21.94C169.1 318.3 159 319.8 151.9 326.2l-80 72C66.89 402.7 64 409.2 64 416s2.891 13.28 7.938 17.84l80 72C156.4 509.9 162.2 512 168 512c3.312 0 6.615-.6875 9.756-2.062C186.4 506.1 192 497.5 192 488L192 448h160c88.22 0 160-71.78 160-160C512 270.3 497.7 256 480 256zM160 128h159.1L320 168c0 9.469 5.578 18.06 14.23 21.94C337.4 191.3 340.7 192 343.1 192c5.812 0 11.57-2.125 16.07-6.156l80-72C445.1 109.3 448 102.8 448 95.1s-2.891-13.28-7.938-17.84l-80-72c-7.047-6.312-17.19-7.875-25.83-4.094C325.6 5.938 319.1 14.53 319.1 24L320 64H160C71.78 64 0 135.8 0 224c0 17.69 14.33 32 32 32s32-14.31 32-32C64 171.1 107.1 128 160 128z"
+                  />
+                </svg>
+              </label>
+              {{ form.password2 }}
+            </div>
+
+            {% if form.password2.errors %} {% for error in form.password2.errors
+            %}
+            <div class="alert alert-danger">
+              <strong>{{ error|escape }}</strong>
+            </div>
+
+            {% endfor %} {% endif %}
+
+            <div class="form-group">
+              <label for="phone">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 512 512"
+                >
+                  <path
+                    d="M511.2 387l-23.25 100.8c-3.266 14.25-15.79 24.22-30.46 24.22C205.2 512 0 306.8 0 54.5c0-14.66 9.969-27.2 24.22-30.45l100.8-23.25C139.7-2.602 154.7 5.018 160.8 18.92l46.52 108.5c5.438 12.78 1.77 27.67-8.98 36.45L144.5 207.1c33.98 69.22 90.26 125.5 159.5 159.5l44.08-53.8c8.688-10.78 23.69-14.51 36.47-8.975l108.5 46.51C506.1 357.2 514.6 372.4 511.2 387z"
+                  />
+                </svg>
+              </label>
+              {{form.phone_number}}
+            </div>
+
+            {% if form.phone_number.errors %} {% for error in
+            form.phone_number.errors %}
+            <div class="alert alert-danger">
+              <strong>{{ error|escape }}</strong>
+            </div>
+
+            {% endfor %} {% endif %}
+
+            <div class="form-group">
+              <label for="passport">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="19"
+                  height="19"
+                  viewBox="0 0 448 512"
+                >
+                  <path
+                    d="M129.6 208c5.25 31.25 25.62 57.13 53.25 70.38C175.3 259.4 170.3 235 168.8 208H129.6zM129.6 176h39.13c1.5-27 6.5-51.38 14.12-70.38C155.3 118.9 134.9 144.8 129.6 176zM224 286.8C231.8 279.3 244.8 252.3 247.4 208H200.5C203.3 252.3 216.3 279.3 224 286.8zM265.1 105.6C272.8 124.6 277.8 149 279.3 176h39.13C313.1 144.8 292.8 118.9 265.1 105.6zM384 0H64C28.65 0 0 28.65 0 64v384c0 35.35 28.65 64 64 64h320c35.2 0 64-28.8 64-64V64C448 28.8 419.2 0 384 0zM336 416h-224C103.3 416 96 408.8 96 400S103.3 384 112 384h224c8.75 0 16 7.25 16 16S344.8 416 336 416zM224 320c-70.75 0-128-57.25-128-128s57.25-128 128-128s128 57.25 128 128S294.8 320 224 320zM265.1 278.4c27.62-13.25 48-39.13 53.25-70.38h-39.13C277.8 235 272.8 259.4 265.1 278.4zM200.6 176h46.88C244.7 131.8 231.8 104.8 224 97.25C216.3 104.8 203.2 131.8 200.6 176z"
+                  />
+                </svg>
+              </label>
+              {{form.identity_id}}
+            </div>
+
+            {% if form.identity_id.errors %} {% for error in
+            form.identity_id.errors %}
+            <div class="alert alert-danger">
+              <strong>{{error|escape}}</strong>
+            </div>
+
+            {% endfor %} {% endif %}
+
+            <button type="submit" name="submit" value="sign_up">
+              Qeydiyyat
+            </button>
+            <p>
+              Yuxarı klikləməklə
+              <a
+                href="{% static 'app/documents/terms.pdf' %}"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Xidmət Şərtləri və Məxfilik Siyasətini</a
+              >
+              qəbul etmiş olursunuz
+            </p>
+          </form>
+        </div>
+      </div>
+      <div class="panel-container">
+        <div class="panel panel--left">
+          <div class="panel__content">
+            <h3>Hesabınız yoxdur ?</h3>
+            <p>Daxil olmaq üçün əvvəlcə qeydiyyatdan keçmək lazımdır</p>
+            <button id="sign-up-btn">Qeydiyyat</button>
+          </div>
+          <img src="{% static 'app/images/sign-in.png' %}" alt="" />
+        </div>
+        <div class="panel panel--right">
+          <div class="panel__content">
+            <h3>Bizdən birisiz ?</h3>
+            <p>Daxil olaraq, istər aparın istər göndərin</p>
+            <button id="sign-in-btn">Daxil ol</button>
+          </div>
+          <img
+            src="{% static 'app/images/sign-up.png' %}"
+            class="image"
+            alt=""
+          />
+        </div>
+      </div>
+    </main>
+
+    <script src="{% static 'app/js/join.js' %}"></script>
+    <script src="{% static 'app/js/validation.min.js' %}"></script>
+    <script src="{% static 'app/js/formValidation.js' %}"></script>
+  </body>
+</html>

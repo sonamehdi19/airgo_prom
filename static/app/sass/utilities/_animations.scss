@@ -1,0 +1,71 @@
+@use "../utilities/mixins" as *;
+
+.sign-up-mode {
+  &:before {
+    transform: translate(100%, -50%);
+    right: 52%;
+  }
+
+  .panel--left img,
+  .panel--left .panel__content {
+    transform: translateX(-800px);
+  }
+
+  .join {
+    left: 25%;
+
+    .sign-up {
+      opacity: 1;
+      z-index: 2;
+    }
+
+    .sign-in {
+      opacity: 0;
+      z-index: 1;
+    }
+  }
+
+  .panel-container .panel--right img,
+  .panel-container .panel--right .panel__content {
+    transform: translateX(0%);
+  }
+
+  .panel-container .panel--left {
+    pointer-events: none;
+  }
+
+  .panel-container .panel--right {
+    pointer-events: all;
+  }
+
+  @include breakpoint(870px) {
+    .join {
+      left: 50%;
+      top: 5%;
+      transform: translate(-50%, 0);
+    }
+
+    &:before {
+      transform: translate(-50%, 100%);
+      bottom: 32%;
+      right: initial;
+    }
+
+    .panel--left img,
+    .panel--left .panel__content {
+      transform: translateY(-300px);
+    }
+
+    .panel-container .panel--right img,
+    .panel-container .panel--right .panel__content {
+      transform: translateY(0%);
+    }
+  }
+
+  @include breakpoint(870px) {
+    &:before {
+      bottom: 23%;
+      left: 50%;
+    }
+  }
+}

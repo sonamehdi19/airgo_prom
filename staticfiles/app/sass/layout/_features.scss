@@ -1,0 +1,48 @@
+@use "../utilities/mixins" as *;
+@use "../utilities/variables" as *;
+
+.features {
+  margin-top: 11rem;
+  margin-bottom: 5rem;
+
+  &__container {
+    display: grid;
+    gap: 3.3rem;
+  }
+
+  .feature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    border-radius: 5px;
+    padding: 2.5rem 2rem;
+    background-color: $color-white;
+
+    img {
+      width: 60px;
+    }
+
+    h2 {
+      font-size: 1.7rem;
+      line-height: 1.9rem;
+    }
+
+    p {
+      font-size: 1.3rem;
+      line-height: 1.7rem;
+      color: #444;
+    }
+  }
+
+  @include md {
+    margin-bottom: 13rem;
+    margin-top: 18rem;
+
+    &__container {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}

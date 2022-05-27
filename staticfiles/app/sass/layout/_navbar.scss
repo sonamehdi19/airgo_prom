@@ -1,0 +1,119 @@
+@use "../utilities/mixins" as *;
+@use "../utilities/variables" as *;
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 0;
+  position: relative;
+
+  .nav {
+    &__logo svg {
+      width: 120px;
+
+      g:first-of-type {
+        fill: $color-white;
+      }
+    }
+
+    &__hamburger {
+      width: 23px;
+      cursor: pointer;
+      fill: darken($color-primary, 15%);
+    }
+
+    &__list {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      align-items: center;
+      font-size: 2.5rem;
+      top: 100%;
+      left: 0;
+      right: 0;
+      gap: 1.5rem;
+      color: $color-white;
+      overflow: hidden;
+      height: 0;
+      transition: all 0.5s;
+      background: lighten($color-accent, 5%);
+      padding: 0;
+
+      li:last-of-type {
+        @include btn(transparent, $color-white);
+        border: 1.5px solid $color-white;
+        font-size: 1.9rem;
+        padding: 1rem 3rem;
+
+        a {
+          transition: all 0.5s;
+        }
+
+        &:hover {
+          a {
+            color: $color-accent;
+          }
+          background: $color-white;
+        }
+      }
+    }
+
+    &--active {
+      height: 89px;
+      padding: 2.5rem 0;
+      z-index: 1;
+    }
+  }
+
+  @include md {
+    padding: 2.5rem 0;
+
+    .nav {
+      &__logo svg {
+        width: 150px;
+
+        g:first-of-type {
+          fill: $color-accent;
+        }
+      }
+
+      &__list {
+        height: auto;
+        background: transparent;
+        padding: 0;
+        position: static;
+        flex-direction: row;
+        font-size: 1.7rem;
+        gap: 3.5rem;
+
+        li:last-of-type {
+          font-size: 1.4rem;
+        }
+      }
+    }
+  }
+}
+
+.navbar-mini {
+  background: $color-primary;
+
+  nav {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .nav {
+    &__logo svg g:first-of-type {
+      fill: $color-accent;
+    }
+
+    &__hamburger {
+      fill: $color-white;
+    }
+
+    &--active {
+      height: 129px;
+    }
+  }
+}

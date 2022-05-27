@@ -1,0 +1,87 @@
+@use "../utilities/mixins" as *;
+@use "../utilities/variables" as *;
+
+.form-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.join {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  left: 75%;
+  width: 50%;
+  transition: 1s 0.7s ease-in-out;
+  display: grid;
+  grid-template-columns: 1fr;
+  z-index: 5;
+  @include form;
+
+  .sign-up {
+    opacity: 0;
+    z-index: 1;
+
+    button {
+      @include btn($color-secondary, $color-white);
+    }
+
+    .form-group:not(:last-of-type) {
+      margin-bottom: 0;
+    }
+  }
+
+  .sign-in {
+    z-index: 2;
+
+    button {
+      @include btn($color-primary, $color-white);
+    }
+  }
+
+  h2 {
+    font-size: 3.5rem;
+    color: #444;
+    margin-bottom: 1rem;
+  }
+
+  svg {
+    cursor: pointer;
+    fill: #acacac;
+    transition: 0.5s;
+  }
+
+  p {
+    font-size: 1.5rem;
+    line-height: 1.8rem;
+    margin-top: 1rem;
+    text-align: center;
+    max-width: 380px;
+
+    a {
+      color: $color-accent;
+      transition: 0.5s;
+
+      &:hover {
+        color: darken($color-accent, 20%);
+      }
+    }
+  }
+
+  @include breakpoint(870px) {
+    width: 100%;
+    top: 95%;
+    transform: translate(-50%, -100%);
+    transition: 1s 0.8s ease-in-out;
+    left: 50%;
+  }
+
+  @include breakpoint(570px) {
+    form {
+      padding: 0 1.8rem;
+    }
+  }
+}

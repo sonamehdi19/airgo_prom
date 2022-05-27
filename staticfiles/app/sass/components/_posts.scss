@@ -1,0 +1,84 @@
+@use "../utilities/mixins" as *;
+@use "../utilities/variables" as *;
+
+.posts-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+
+  .post {
+    font-size: 1.35rem;
+    background-color: $color-white;
+    line-height: 1.55rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    box-shadow: rgb(0 0 0 / 16%) 0px 1px 4px;
+    border-radius: 5px;
+    padding: 2.5rem 2rem 3rem;
+
+    header {
+      font-size: 1.5rem;
+      align-self: end;
+
+      p {
+        padding: 0.5rem 2rem;
+        border-radius: 49px;
+        display: inline-block;
+        font-weight: 500;
+      }
+      margin-bottom: -1.3rem;
+    }
+
+    .post--carrier {
+      p {
+        border: 1.4px solid rgb(99, 99, 203);
+        color: rgb(99, 99, 203);
+      }
+    }
+
+    .post--sender {
+      p {
+        border: 1.4px solid rgb(92, 217, 131);
+        color: rgb(92, 217, 131);
+      }
+    }
+  }
+
+  .post__detail {
+    display: grid;
+    row-gap: 0.5rem;
+
+    a {
+      color: $color-primary;
+      transition: all 0.5s;
+
+      &:hover {
+        color: darken($color-primary, 10%);
+      }
+    }
+  }
+
+  .no-post {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.7rem;
+    align-content: center;
+  }
+
+  @include sm {
+    .post {
+      font-size: 1.35rem;
+      line-height: 1.55rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.3rem;
+    }
+
+    .post__detail {
+      grid-template-columns: 2fr 5fr;
+      column-gap: 0.5rem;
+    }
+  }
+}

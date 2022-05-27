@@ -1,0 +1,53 @@
+@use "../utilities/variables" as *;
+@use "../utilities/mixins" as *;
+
+main {
+  position: relative;
+  width: 100%;
+  background-color: $color-white;
+  min-height: 100vh;
+  overflow: hidden;
+
+  &:before {
+    content: "";
+    position: absolute;
+    height: 2000px;
+    width: 2000px;
+    top: -10%;
+    right: 48%;
+    transform: translateY(-50%);
+    background-image: linear-gradient(
+      90deg,
+      $color-secondary 35%,
+      $color-primary 100%
+    );
+    transition: 1.8s ease-in-out;
+    border-radius: 50%;
+    z-index: 6;
+  }
+
+  @include breakpoint(870px) {
+    min-height: 800px;
+    height: 100vh;
+
+    &:before {
+      width: 1500px;
+      height: 1500px;
+      transform: translateX(-50%);
+      left: 30%;
+      bottom: 68%;
+      right: initial;
+      top: initial;
+      transition: 2s ease-in-out;
+    }
+  }
+
+  @include breakpoint(570px) {
+    padding: 1.8rem;
+
+    &:before {
+      bottom: 75%;
+      left: 50%;
+    }
+  }
+}

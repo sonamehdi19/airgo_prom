@@ -1,0 +1,67 @@
+@use "../utilities/mixins" as *;
+@use "../utilities/variables" as *;
+
+.hero {
+  display: grid;
+  grid-template-rows: auto auto;
+  justify-items: center;
+  gap: 3rem;
+  margin-top: 5rem;
+
+  &__image {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  &__content {
+    text-align: center;
+
+    h1 {
+      font-size: 3.1rem;
+      line-height: 3.4rem;
+    }
+
+    p {
+      margin-top: 1.5rem;
+      margin-bottom: 2.2rem;
+      font-size: 1.5rem;
+      line-height: 1.8rem;
+    }
+
+    a {
+      @include btn($color-primary, $color-white);
+      padding: 1rem 3rem;
+      line-height: 4rem;
+    }
+  }
+
+  @include md {
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+    margin-top: 3rem;
+
+    &__image {
+      width: 100%;
+      max-width: none;
+      justify-self: end;
+    }
+
+    &__content {
+      max-width: 500px;
+      justify-self: left;
+      text-align: left;
+
+      h1 {
+        font-size: 4rem;
+        line-height: 4.2rem;
+      }
+
+      p {
+        font-size: 1.5rem;
+        line-height: 1.9rem;
+      }
+    }
+  }
+}
